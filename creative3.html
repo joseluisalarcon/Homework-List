@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head/><script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<body background="http://schwalbentertainment.com/wp-content/uploads/2016/06/dark-scratched-paper.jpg">
+    <title> AngularJS Creative Assignment </title>
+
+<script>var app=angular.module("My Homework",[]);app.controller("myCtrl",function($scope){$scope.hw=[];$scope.dates=[];$scope.addItem=function(){$scope.errortext="";if(!$scope.addMe){return;}
+if(!$scope.addDate){return;}
+if($scope.hw.indexOf($scope.addMe)==-1){$scope.hw.push($scope.addMe);$scope.dates.push($scope.addDate);}else{$scope.errortext="Homework is already listed.";}}
+$scope.removeItem=function(x){$scope.errortext="";$scope.dateError="";$scope.hw.splice(x,1);$scope.dates.splice(x,1);}});</script>
+<h1 style="font-family: verdana; color:white;"> My Homework List </h1>
+<h4 style="font-family: verdana; color:white;">You can click on the small "x" to delete items.</h4>
+<br><div ng-app="My Homework" ng-controller="myCtrl">
+  <table>
+    <tbody>
+        <tr ng-repeat="x in hw">
+            <th style="color: white;">{{x + "   " + '-->' + "    " + "          "}}{{dates[$index]}}<span ng-click="removeItem($index)"> x</span>
+          </th>
+        </tr>
+    </tbody>               
+  </table>
+  
+  <br><br><br><br><input class="form-control" ng-model="addMe" style="max-width: 250px;"><br>
+  
+  <div class="input-group date" data-provide="datepicker">
+  <br><input class="form-control" type="date" data-date-format="mm/dd/yyyy" ng-model="addDate" style="max-width: 100%; text-align:center;"><br>
+  </div>
+ <br> <button class="btn btn-info" ng-click="addItem()">Add Item</button>
+
+  
+ <br> <p>{{errortext}}</p>
+</div>
+
+<!-- <p>Try to add the same item twice, and you will get an error message.</p> -->
+
+</body>
+</html>
